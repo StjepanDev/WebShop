@@ -1,21 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebShop.Models
+namespace WebshopDemo.Models
 {
     public class ProductCategory
     {
         public int Id { get; set; }
-
-        [Required]
         public int CategoryId { get; set; }
-        [Required]
         public int ProductId { get; set; }
 
         [NotMapped]
-        public int ProductName { get; set; }
+        public string ProductName { get; set; }
         [NotMapped]
-        public int CategoryName { get; set; }
-
+        public string CategoryName { get; set; }
     }
 }
