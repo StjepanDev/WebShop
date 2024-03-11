@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebshopDemo.Models;
 
 namespace WebshopDemo.Models
 {
