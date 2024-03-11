@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebShop.Data;
-using WebShop.Models;
+using Webshop.Data;
+using Webshop.Models;
 
 namespace WebShop.Areas.Admin.Controllers
 {
@@ -11,20 +10,20 @@ namespace WebShop.Areas.Admin.Controllers
     [Authorize(Roles = "User")]
     public class ProductUserController : Controller
     {
-       
+
         private readonly ApplicationDbContext _context;
 
         public ProductUserController(ApplicationDbContext context)
         {
             _context = context;
         }
-       
+
         public async Task<IActionResult> Index()
         {
             var products = await _context.Product.ToListAsync();
             return View(products);
         }
-        
+
         public async Task<IActionResult> Details(int id)
         {
 
@@ -41,15 +40,15 @@ namespace WebShop.Areas.Admin.Controllers
             //order.products = products;
             return View(products);
         }
-       
+
         public IActionResult Create()
         {
-           
+
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
+
         public async Task<IActionResult> Create([Bind("Id,Name,Description,Quantity,Price")] Product products)
         {
             if (ModelState.IsValid)
@@ -63,7 +62,7 @@ namespace WebShop.Areas.Admin.Controllers
             return View(products);
 
         }
-     
+
         public async Task<IActionResult> Edit(int id)
         {
 
@@ -78,7 +77,7 @@ namespace WebShop.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-  
+
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Quantity,Price")] Product products)
         {
 
@@ -115,7 +114,7 @@ namespace WebShop.Areas.Admin.Controllers
 
 
         }
-   
+
         public async Task<IActionResult> Delete(int id)
         {
 
@@ -132,7 +131,7 @@ namespace WebShop.Areas.Admin.Controllers
         [HttpPost, ActionName(
             "Delete")]
         [ValidateAntiForgeryToken]
- 
+
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
 

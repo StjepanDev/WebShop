@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Migrations;
-using WebshopDemo.Models;
+using Webshop.Models;
 
 #nullable disable
 
-namespace WebshopDemo.Data.Migrations
+namespace Webshop.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddAdminAccount : Migration

@@ -2,12 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using WebshopDemo.Models;
-using WebshopDemo.Data;
-using WebshopDemo.Extensions;
-using WebshopDemo.Models;
+using Webshop.Data;
+using Webshop.Extensions;
+using Webshop.Models;
 
-namespace WebshopDemo.Controllers
+namespace Webshop.Controllers
 {
     public class HomeController : Controller
     {
@@ -39,9 +38,9 @@ namespace WebshopDemo.Controllers
 
             var products = await _context.Product.Where(p => productIds.Contains(p.Id)).ToListAsync();
 
-            ViewBag.Categories = await _context.Category.Select(c => 
-                new SelectListItem 
-                { 
+            ViewBag.Categories = await _context.Category.Select(c =>
+                new SelectListItem
+                {
                     Value = c.Id.ToString(),
                     Text = c.Name,
                 }).ToListAsync();
@@ -53,7 +52,7 @@ namespace WebshopDemo.Controllers
         {
             List<CartItem> cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>(SessionKeyName) ?? new List<CartItem>();
 
-            if (cart.Count == 0) 
+            if (cart.Count == 0)
             {
                 return RedirectToAction(nameof(Index));
             }
@@ -79,7 +78,7 @@ namespace WebshopDemo.Controllers
             }
 
             var modelErrors = new List<string>();
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 List<OrderProduct> orderProducts = new List<OrderProduct>();
 
@@ -95,7 +94,7 @@ namespace WebshopDemo.Controllers
 
                     orderProducts.Add(orderProduct);
                 }
-                
+
                 order.OrderProducts = orderProducts;
 
                 _context.Order.Add(order);
@@ -107,7 +106,7 @@ namespace WebshopDemo.Controllers
             }
             else
             {
-                foreach (var modelState in ModelState.Values) 
+                foreach (var modelState in ModelState.Values)
                 {
                     foreach (var modelError in modelState.Errors)
                     {

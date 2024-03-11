@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebshopDemo.Data;
+using Webshop.Data;
 
 #nullable disable
 
-namespace WebshopDemo.Data.Migrations
+namespace Webshop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240223191220_ConvertUserPropertiesToString")]
@@ -294,7 +294,7 @@ namespace WebshopDemo.Data.Migrations
                     b.ToTable("ProductCategory");
                 });
 
-            modelBuilder.Entity("WebshopDemo.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Webshop.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -374,7 +374,7 @@ namespace WebshopDemo.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("WebshopDemo.Models.OrderProduct", b =>
+            modelBuilder.Entity("Webshop.Models.OrderProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -417,7 +417,7 @@ namespace WebshopDemo.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebshopDemo.Models.ApplicationUser", null)
+                    b.HasOne("Webshop.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -426,7 +426,7 @@ namespace WebshopDemo.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebshopDemo.Models.ApplicationUser", null)
+                    b.HasOne("Webshop.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -441,7 +441,7 @@ namespace WebshopDemo.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebshopDemo.Models.ApplicationUser", null)
+                    b.HasOne("Webshop.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -450,7 +450,7 @@ namespace WebshopDemo.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebshopDemo.Models.ApplicationUser", null)
+                    b.HasOne("Webshop.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -459,7 +459,7 @@ namespace WebshopDemo.Data.Migrations
 
             modelBuilder.Entity("Webshop.Models.Order", b =>
                 {
-                    b.HasOne("WebshopDemo.Models.ApplicationUser", null)
+                    b.HasOne("Webshop.Models.ApplicationUser", null)
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -481,7 +481,7 @@ namespace WebshopDemo.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebshopDemo.Models.OrderProduct", b =>
+            modelBuilder.Entity("Webshop.Models.OrderProduct", b =>
                 {
                     b.HasOne("Webshop.Models.Order", null)
                         .WithMany("OrderProducts")
@@ -513,7 +513,7 @@ namespace WebshopDemo.Data.Migrations
                     b.Navigation("ProductCategories");
                 });
 
-            modelBuilder.Entity("WebshopDemo.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Webshop.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Orders");
                 });

@@ -2,12 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using System.ComponentModel;
-using WebshopDemo.Models;
-using WebshopDemo.Data;
+using Webshop.Data;
+using Webshop.Models;
 
-namespace WebshopDemo.Areas.Admin.Controllers
+namespace Webshop.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
@@ -43,7 +41,7 @@ namespace WebshopDemo.Areas.Admin.Controllers
             return View(order);
         }
 
-        public async Task<IActionResult> Create() 
+        public async Task<IActionResult> Create()
         {
             Order order = new Order();
             order.DateCreated = DateTime.Now;
@@ -61,7 +59,7 @@ namespace WebshopDemo.Areas.Admin.Controllers
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
-                return  RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
             }
             return View(order);
         }
@@ -71,7 +69,7 @@ namespace WebshopDemo.Areas.Admin.Controllers
             ViewBag.Users = await GetAllUsers();
 
             var order = await _context.Order.FindAsync(id);
-            if (order == null) 
+            if (order == null)
             {
                 return NotFound();
             }
@@ -135,13 +133,13 @@ namespace WebshopDemo.Areas.Admin.Controllers
 
         private async Task<List<SelectListItem>> GetAllUsers()
         {
-           return await _context.Users.Select(user =>
-                new SelectListItem
-                {
-                    Value = user.Id.ToString(),
-                    Text = user.FirstName + " " + user.LastName
-                }
-            ).ToListAsync();
+            return await _context.Users.Select(user =>
+                 new SelectListItem
+                 {
+                     Value = user.Id.ToString(),
+                     Text = user.FirstName + " " + user.LastName
+                 }
+             ).ToListAsync();
         }
     }
 }

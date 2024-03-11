@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System.Collections.Generic;
-using System.Net;
-using System.Runtime.InteropServices;
-using WebShop.Models;
+using Webshop.Models;
+
 
 #nullable disable
 
@@ -16,7 +13,7 @@ namespace WebShop.Data.Migrations
         const string addUserGuid = "87DE39DF-4284-4C4E-B290-21CB51500175";
         const string adminRoleGuid = "57aa9f55-7a5b-4cd4-b543-fd12015ebfec";
 
-       
+
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -81,7 +78,7 @@ namespace WebShop.Data.Migrations
         WHERE Id = '{adminRoleGuid}'
     ");
 
-          
+
             migrationBuilder.Sql($@"
         DELETE FROM AspNetUserRoles
         WHERE UserId = '{addUserGuid}'

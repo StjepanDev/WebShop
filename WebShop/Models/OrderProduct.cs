@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebshopDemo.Models
+namespace Webshop.Models
 {
     public class OrderProduct
     {

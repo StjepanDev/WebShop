@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Permissions;
-using WebshopDemo.Models;
-using WebshopDemo.Data;
+using Webshop.Data;
+using Webshop.Models;
 
-namespace WebshopDemo.Areas.Admin.Controllers
+namespace Webshop.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
@@ -15,10 +14,10 @@ namespace WebshopDemo.Areas.Admin.Controllers
 
         public CategoryController(ApplicationDbContext context)
         {
-                _context = context;
+            _context = context;
         }
 
-        
+
         public async Task<IActionResult> Index()
         {
             var categories = await _context.Category.ToListAsync();
@@ -61,7 +60,7 @@ namespace WebshopDemo.Areas.Admin.Controllers
         {
             var category = await _context.Category.FindAsync(id);
 
-            if (category == null) 
+            if (category == null)
             {
                 return NotFound();
             }
@@ -71,14 +70,14 @@ namespace WebshopDemo.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category) 
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
         {
             if (id != category.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -104,7 +103,7 @@ namespace WebshopDemo.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var category = await _context.Category.FirstOrDefaultAsync(c => c.Id == id);
-            if (category == null) 
+            if (category == null)
             {
                 return NotFound();
             }

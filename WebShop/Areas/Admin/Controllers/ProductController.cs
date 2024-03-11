@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebshopDemo.Models;
-using WebshopDemo.Data;
+using Webshop.Data;
+using Webshop.Models;
 
-namespace WebshopDemo.Areas.Admin.Controllers
+namespace Webshop.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
@@ -15,7 +14,7 @@ namespace WebshopDemo.Areas.Admin.Controllers
 
         public ProductController(ApplicationDbContext context)
         {
-                _context = context;
+            _context = context;
         }
 
         public async Task<IActionResult> Index()

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebshopDemo.Data;
+using Webshop.Data;
 
 #nullable disable
 
-namespace WebshopDemo.Data.Migrations
+namespace Webshop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240223180400_AddAdaptiveTables")]
@@ -357,7 +357,7 @@ namespace WebshopDemo.Data.Migrations
                     b.ToTable("ProductCategory");
                 });
 
-            modelBuilder.Entity("WebshopDemo.Models.OrderProduct", b =>
+            modelBuilder.Entity("Webshop.Models.OrderProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -455,7 +455,7 @@ namespace WebshopDemo.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebshopDemo.Models.OrderProduct", b =>
+            modelBuilder.Entity("Webshop.Models.OrderProduct", b =>
                 {
                     b.HasOne("Webshop.Models.Order", null)
                         .WithMany("OrderProducts")

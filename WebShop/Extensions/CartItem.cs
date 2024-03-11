@@ -1,6 +1,6 @@
-﻿using WebshopDemo.Models;
+﻿using Webshop.Models;
 
-namespace WebshopDemo.Extensions
+namespace Webshop.Extensions
 {
     public class CartItem
     {

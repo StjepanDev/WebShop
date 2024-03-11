@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebshopDemo.Data;
-using WebshopDemo.Extensions;
+using Webshop.Data;
+using Webshop.Extensions;
 
-namespace WebshopDemo.Controllers
+namespace Webshop.Controllers
 {
     public class CartController : Controller
     {

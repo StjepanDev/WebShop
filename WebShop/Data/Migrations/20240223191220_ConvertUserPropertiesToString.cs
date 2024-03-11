@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WebshopDemo.Data.Migrations
+namespace Webshop.Data.Migrations
 {
     /// <inheritdoc />
     public partial class ConvertUserPropertiesToString : Migration

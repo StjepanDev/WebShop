@@ -1,7 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Newtonsoft.Json;
 
-namespace WebshopDemo.Extensions
+namespace Webshop.Extensions
 {
     public static class SessionExtensions
     {
